@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * swap - Swap two integers
- * @a: the first number
- * @b: the second number
+ * swap - Swaps two integers
+ *
+ * @a: First integer
+ * @b: Second integer
  */
-
 void swap(int *a, int *b)
 {
 	int temp;
@@ -14,14 +14,16 @@ void swap(int *a, int *b)
 	*a = *b;
 	*b = temp;
 }
+
 /**
- * partition - partition scheme for quick sort
- * @array: the array to be sorted
+ * partition - Lomuto partition scheme for Quick sort
+ *
+ * @array: The array to be sorted
  * @low: Starting index of the partition
  * @high: Ending index of the partition
+ *
  * Return: Index of the pivot element
  */
-
 int partition(int *array, int low, int high)
 {
 	int pivot = array[high];
@@ -42,35 +44,36 @@ int partition(int *array, int low, int high)
 }
 
 /**
- * quick_sort_helper - Recursive function to perform the Quick sort
+ * quicksort - Recursive function to perform Quick sort
  *
  * @array: The array to be sorted
  * @low: Starting index of the partition
  * @high: Ending index of the partition
- * @size: size of the array
  */
-
-void quick_sort_helper(int *array, int low, int high, size_t size)
+void quicksort(int *array, int low, int high)
 {
-	int pi, i;
+	int pivot, i;
 
 	if (low < high)
 	{
-		pi = partition(array, low, high, size);
+		pivot = partition(array, low, high);
 
-		quick_sort_helper(array, low, pi - 1, size);
-		quick_sort_helper(array, pi + 1, high, size);
+		for (i = 0; i < high + 1; i++)
+			printf("%d ", array[i]);
+		printf("\n");
+
+		quicksort(array, low, pivot - 1);
+		quicksort(array, pivot + 1, high);
 	}
 }
 
 /**
- * quick_sort - sorts an array of integers in ascending order using the
- * Quick sort algorithm
+ * quick_sort - Sorts an array of integers in ascending order using
+ *              the Quick sort algorithm with Lomuto partition scheme
  *
  * @array: The array to be sorted
- * @size: elements in the array
+ * @size: Number of elements in the array
  */
-
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size <= 1)
