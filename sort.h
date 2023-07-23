@@ -31,5 +31,6 @@ void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void switch_nodes(listint_t **list, listint_t *n1, listint_t *n2);
+void cocktail_shaker_sort(listint_t **list);
 
 #endif

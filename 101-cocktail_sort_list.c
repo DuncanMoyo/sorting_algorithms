@@ -7,17 +7,13 @@
  * @list: double pointer to the head of the list
  */
 
-void cocktail_sort_list(listint_t **list)
+void cocktail_shaker_sort(listint_t **list)
 {
 	listint_t *current = NULL;
 	listint_t *tail = NULL;
 	int swapped = 0;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
-	do
-	{
+	do {
 		swapped = 0;
 		current = *list;
 
@@ -75,4 +71,19 @@ void switch_nodes(listint_t **list, listint_t *n1, listint_t *n2)
 	n2->prev = n1->prev;
 	n2->next = n1;
 	n1->prev = n2;
+}
+
+/**
+ * cocktail_sort_list - Sorts a doubly linked list of integers in
+ * ascending order using the Cocktail Shaker sort algorithm
+ *
+ * @list: double pointer to the head of the list
+ */
+
+void cocktail_sort_list(listint_t **list)
+{
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+
+	cocktail_shaker_sort(list);
 }
